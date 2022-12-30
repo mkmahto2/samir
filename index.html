@@ -1,0 +1,27 @@
+<script>
+  function displayTime() {
+    var currentTime = new Date();
+    var hours = currentTime.getHours();
+    var minutes = currentTime.getMinutes();
+    var seconds = currentTime.getSeconds();
+
+    // Add a leading zero to single-digit minutes and seconds
+    minutes = (minutes < 10 ? "0" : "") + minutes;
+    seconds = (seconds < 10 ? "0" : "") + seconds;
+
+    // Choose either "AM" or "PM" as appropriate
+    var timeOfDay = (hours < 12) ? "AM" : "PM";
+
+    // Convert hours from military time
+    hours = (hours > 12) ? hours - 12 : hours;
+
+    // Display the result
+    var currentTimeString = hours + ":" + minutes + ":" + seconds + " " + timeOfDay;
+    document.getElementById("currentTime").innerHTML = currentTimeString;
+  }
+
+  // Update the clock every 1 second
+  setInterval(displayTime, 1000);
+</script>
+
+<div id="currentTime"></div>
